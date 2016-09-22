@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Mail\UserSignedUp;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -49,6 +51,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
+            'salutation' => 'required|max:4',
+            'business_name' => 'required|max:255',
+            'contact_number' => 'required|max:15',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -62,10 +67,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'salutation' => $data['salutation'],
+            'business_name' => $data['business_name'],
+            'contact_number' => $data['contact_number'],
             'password' => bcrypt($data['password']),
         ]);
+
+        Mail::to('beau.bull@eco-energi.com')->send(new UserSignedUp($user));
+
+        return $user;
     }
 }
