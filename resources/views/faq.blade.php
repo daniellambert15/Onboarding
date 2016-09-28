@@ -5,6 +5,7 @@
         <div class="row">
             @include('layouts.nav')
             <div class="col-md-8">
+                @include('alerts')
                 <div class="tab-content">
                     <div class="panel panel-default">
                         <div class="panel-heading">FAQ</div>

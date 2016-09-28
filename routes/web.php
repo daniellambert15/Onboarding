@@ -41,17 +41,26 @@ Route::group(['middleware' => 'stage2'], function () {
     Route::get('/userEditQuiz/{id}', 'QuizController@edit');
 });
 
+////Stage 3
+//Route::group(['middleware' => 'stage3'], function () {
+//    Route::get('/user', 'UserController@showUser');
+//    Route::get('/monthActivities/{month}', 'ActivityController@monthActivities');
+//    Route::get('/getMonths', 'ActivityController@getMonths');
+//    Route::get('/calendar', 'ActivityController@calendar');
+//    Route::get('/completedTasks', 'ActivityController@completedTasks');
+//    Route::get('/activity/{id}', 'ActivityController@displayActivity');
+//    Route::post('/submitUserAnswer', 'ActivityController@saveUserActivity');
+//    Route::get('/editActivity/{id}', 'ActivityController@editActivity');
+//    Route::post('/updateActivity', 'ActivityController@updateActivity');
+//});
+
+
 //Stage 3
 Route::group(['middleware' => 'stage3'], function () {
-    Route::get('/user', 'UserController@showUser');
-    Route::get('/monthActivities/{month}', 'ActivityController@monthActivities');
-    Route::get('/getMonths', 'ActivityController@getMonths');
-    Route::get('/calendar', 'ActivityController@calendar');
-    Route::get('/completedTasks', 'ActivityController@completedTasks');
-    Route::get('/activity/{id}', 'ActivityController@displayActivity');
-    Route::post('/submitUserAnswer', 'ActivityController@saveUserActivity');
-    Route::get('/editActivity/{id}', 'ActivityController@editActivity');
-    Route::post('/updateActivity', 'ActivityController@updateActivity');
+    Route::get('/module', 'ModuleController@index');
+    Route::get('/moduleQuestion/{id}', 'ModuleController@show');
+    Route::post('/submitModuleAnswer', 'ModuleController@store');
+    Route::get('/completedModules', 'ModuleController@completedModules');
 });
 
 Route::group(['middleware' => 'is_admin'], function () {
@@ -88,12 +97,27 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::get('/removeAdminQuiz/{id}', 'Admin\QuizController@destroy');
 
     //Admin - Activities
-    Route::get('/adminActivities', 'Admin\ActivityController@index');
-    Route::get('/addActivity', 'Admin\ActivityController@create');
-    Route::post('/postAdminActivity', 'Admin\ActivityController@store');
-    Route::get('/editAdminActivity/{id}', 'Admin\ActivityController@edit');
-    Route::post('/postUpdateAdminActivity', 'Admin\ActivityController@update');
-    Route::get('/removeAdminActivity/{id}', 'Admin\ActivityController@destroy');
+//    Route::get('/adminActivities', 'Admin\ActivityController@index');
+//    Route::get('/addActivity', 'Admin\ActivityController@create');
+//    Route::post('/postAdminActivity', 'Admin\ActivityController@store');
+//    Route::get('/editAdminActivity/{id}', 'Admin\ActivityController@edit');
+//    Route::post('/postUpdateAdminActivity', 'Admin\ActivityController@update');
+//    Route::get('/removeAdminActivity/{id}', 'Admin\ActivityController@destroy');
+
+    //Admin - Modules
+    Route::get('/adminModules', 'Admin\ModuleController@index');
+    Route::get('/admin/removeModuleQuestion/{id}', 'Admin\ModuleController@destroy');
+    Route::get('/admin/deleteModule/{id}', 'Admin\ModuleController@destroyModule');
+    Route::get('/admin/addModuleQuestion/{id}','Admin\ModuleController@addModuleQuestion');
+    Route::get('/admin/editModuleQuestion/{id}', 'Admin\ModuleController@edit');
+    Route::post('/editModuleQuestion', 'Admin\ModuleController@update');
+    Route::get('/admin/addModule','Admin\ModuleController@addModule');
+    Route::post('/addModuleQuestion','Admin\ModuleController@postAddModuleQuestion');
+    Route::post('/addModule','Admin\ModuleController@postAddModule');
+    Route::post('/editModule','Admin\ModuleController@postEditModule');
+    Route::get('/admin/editModule/{id}','Admin\ModuleController@editModule');
+
+
 
     //Admin - FAQS
     Route::get('/adminFAQS', 'Admin\FaqController@index');

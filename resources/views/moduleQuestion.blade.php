@@ -8,18 +8,15 @@
                 @include('alerts')
                 <div class="tab-content">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ $quiz->quiz->title }}</div>
+                        <div class="panel-heading">{{ $question->name }}</div>
                         <div class="panel-body">
-                            <form method="post" action="/postUpdateQuiz">
-                                <div class="well">
-                                    Q) {{ $quiz->quiz->questions }}
-                                </div>
+                            <p>{{ $question->question }}</p>
+                            <form method="post" action="/submitModuleAnswer">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="id" value="{{ $quiz->id }}">
-
+                                <input type="hidden" value="{{ $question->id }}" name="id">
                                 <div class="form-group">
                                     <label for="answer">Answer</label>
-                                    <textarea  class="form-control" name="answer" style="min-height: 360px" id="answer" placeholder="answer">{{ $quiz->answer }}</textarea>
+                                    <textarea class="form-control" name="answer"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-default">Submit</button>
                             </form>

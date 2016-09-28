@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Files;
+use App\Models\Module;
 use Illuminate\Http\Request;
 
 use App\Models\User;
@@ -49,7 +50,7 @@ class UserController extends Controller
 
     public function displayEditUser($id)
     {
-        return view('admin.displayEditUser', ['user' => User::find($id)]);
+        return view('admin.displayEditUser', ['user' => User::find($id), 'modules' => Module::all()]);
     }
 
     public function postEditUser(Request $request){
@@ -57,6 +58,7 @@ class UserController extends Controller
         $user->salutation = $request->input('salutation');
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        $user->module = $request->input('module');
         $user->business_name = $request->input('business_name');
         $user->contact_number = $request->input('contact_number');
         if($request->input('stage1') == null){ $user->stage1 = 0;} else{ $user->stage1 = $request->input('stage1');}

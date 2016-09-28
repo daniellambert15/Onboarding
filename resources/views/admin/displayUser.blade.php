@@ -5,11 +5,7 @@
         <div class="row">
             @include('layouts.nav')
             <div class="col-md-8">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
+            @include('alerts')
             <!-- add calendar from VUE -->
                 <div class="tab-content">
                     <div class="panel panel-default">
@@ -62,15 +58,14 @@
                             <!-- start tab -->
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Activities</h3>
+                                    <h3 class="panel-title">Modules</h3>
                                 </div>
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Actvity</th>
-                                            <th>Question</th>
+                                            <th>Title</th>
                                             <th>Answer</th>
                                         </tr>
                                         </thead>
@@ -78,7 +73,6 @@
                                         @foreach($user->activities as $activity)
                                             <tr>
                                                 <td>{{ $activity->id }}</td>
-                                                <td>{{ $activity->activity->name }}</td>
                                                 <td>{{ $activity->activity->description }}</td>
                                                 <td>{{ $activity->answer }}</td>
                                             </tr>

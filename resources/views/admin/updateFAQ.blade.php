@@ -5,20 +5,7 @@
         <div class="row">
             @include('layouts.nav')
             <div class="col-md-8">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-            @endif
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            @include('alerts')
             <!-- add calendar from VUE -->
                 <div class="tab-content">
                     <div class="panel panel-default">

@@ -45,7 +45,7 @@ class userTaskSubmitted extends Notification
     {
 
         // fire off an email to the managers
-        Mail::to('beau.bull@eco-energi.com')->send(new taskSubmitted(Auth::user()));
+        Mail::to(env('ADMIN_EMAIL'))->send(new taskSubmitted(Auth::user()));
 
         return (new MailMessage)
                     ->line('Thank you for submission. A manager will review your answer and possibly contact you shortly to discuss your answer.')

@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-        Mail::to('beau.bull@eco-energi.com')->send(new UserSignedUp($user));
+        Mail::to(env('ADMIN_EMAIL'))->send(new UserSignedUp($user));
 
         return $user;
     }

@@ -51,7 +51,7 @@ class FilesController extends Controller
         $userFile->fileLocation = $path;
         $userFile->save();
 
-        Mail::to('beau.bull@eco-energi.com')->send(new userUploadedFile(Auth::user()));
+        Mail::to(env('ADMIN_EMAIL'))->send(new userUploadedFile(Auth::user()));
 
         return redirect('/files')->with('success', 'You\'ve successfully uploaded the document');
 

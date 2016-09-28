@@ -16,7 +16,7 @@
                             <a href="/adminQuizzes">Quizzes</a>
                         </li>
                         <li role="presentation">
-                            <a href="/adminActivities">Activities</a>
+                            <a href="/adminModules">Modules</a>
                         </li>
                         <li role="presentation">
                             <a href="/adminFAQS">FAQ</a>
@@ -56,15 +56,15 @@
         @endif
         @if(Auth::user()->is_admin OR Auth::user()->stage3)
         <div class="panel panel-default">
-            <div class="panel-heading">Activities</div>
+            <div class="panel-heading">Modules</div>
 
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation">
-                        <a href="/calendar">Calendar</a>
+                        <a href="/module">Module</a>
                     </li>
                     <li role="presentation">
-                        <a href="/completedTasks">Completed Activities</a>
+                        <a href="/completedModules">Completed Modules</a>
                     </li>
                 </ul>
             </div>

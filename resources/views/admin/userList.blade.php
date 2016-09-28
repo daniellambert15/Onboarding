@@ -5,16 +5,7 @@
         <div class="row">
             @include('layouts.nav')
             <div class="col-md-8">
-                @if (session('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if (session('error'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ session('error') }}
-                    </div>
-                    @endif
+                @include('alerts')
                 <div class="tab-content">
                     <div class="panel panel-default">
                         <div class="panel-heading">Userlist</div>
@@ -27,6 +18,7 @@
                                         <th>Email</th>
                                         <th>Company</th>
                                         <th>Contact Number</th>
+                                        <th>Module</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -38,6 +30,7 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->business_name }}</td>
                                             <td>{{ $user->contact_number }}</td>
+                                            <td>{{ $user->userModule['name'] }}</td>
                                             <td>
                                                 <a href="/viewUser/{{ $user->id }}">View</a> -
                                                 <a href="/editUser/{{ $user->id }}">Edit</a> -

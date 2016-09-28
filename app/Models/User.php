@@ -84,6 +84,10 @@ class User extends Authenticatable
 
     }
 
+    public function userModule(){
+        return $this->hasOne('App\Models\Module', 'id', 'module');
+    }
+
     public function userFile($id)
     {
 
