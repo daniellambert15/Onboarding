@@ -61,6 +61,8 @@ Route::group(['middleware' => 'stage3'], function () {
     Route::get('/moduleQuestion/{id}', 'ModuleController@show');
     Route::post('/submitModuleAnswer', 'ModuleController@store');
     Route::get('/completedModules', 'ModuleController@completedModules');
+    Route::post('/updateUserAnswer', 'ModuleController@update');
+    Route::get('/updateUserAnswer/{id}', 'ModuleController@edit');
 });
 
 Route::group(['middleware' => 'is_admin'], function () {

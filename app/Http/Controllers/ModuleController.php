@@ -78,7 +78,7 @@ class ModuleController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('editModuleAnswer', ['answer' => UserModuleAnswer::find($id)]);
     }
 
     /**
@@ -88,9 +88,12 @@ class ModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $userAnswer = UserModuleAnswer::find($request->input('id'));
+        $userAnswer->answer = $request->input('answer');
+        $userAnswer->save();
+        return redirect('module')->with('success', 'Thank you. You\'ve updated that module question.');
     }
 
     /**

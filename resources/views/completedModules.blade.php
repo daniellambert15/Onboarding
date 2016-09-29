@@ -29,6 +29,7 @@
                                                             <tr>
                                                                 <th>Answer</th>
                                                                 <th>Submitted</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -36,6 +37,7 @@
                                                                 <tr>
                                                                     <td>{{ $answer->answer }}</td>
                                                                     <td>{{ $answer->created_at }}</td>
+                                                                    <td><a href="/updateUserAnswer/{{ $answer->id }}">Edit</a></td>
                                                                 </tr>
                                                             @endforeach
                                                         </tbody>
