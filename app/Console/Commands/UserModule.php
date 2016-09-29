@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Mail;
 use Illuminate\Console\Command;
 
 class UserModule extends Command
@@ -37,7 +38,7 @@ class UserModule extends Command
      */
     public function handle()
     {
-        Mail::send('mail.test', function ($message)
+        Mail::send('mail.test', [] , function ($message)
         {
             $message->from(env('ADMIN_EMAIL'), env('ADMIN_NAME'));
 
