@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+
+class UserModule extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'emails:send';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Test sending email';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+        Mail::send('mail.test', function ($message)
+        {
+            $message->from(env('ADMIN_EMAIL'), env('ADMIN_NAME'));
+
+            $message->to('daniel.lambert@gas-elec.co.uk');
+
+        });
+    }
+}

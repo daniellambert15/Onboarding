@@ -117,8 +117,6 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::post('/editModule','Admin\ModuleController@postEditModule');
     Route::get('/admin/editModule/{id}','Admin\ModuleController@editModule');
 
-
-
     //Admin - FAQS
     Route::get('/adminFAQS', 'Admin\FaqController@index');
     Route::get('/addFAQ', 'Admin\FaqController@create');
