@@ -7,6 +7,7 @@ use App\Models\ModuleQuestion;
 use App\Models\UserModuleAnswer;
 use Illuminate\Http\Request;
 use Mail;
+use App\Mail\taskSubmitted;
 
 use App\Http\Requests;
 use Auth;
