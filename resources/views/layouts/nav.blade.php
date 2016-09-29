@@ -48,7 +48,7 @@
                             <a href="/quizes">Quiz</a>
                         </li>
                         <li role="presentation">
-                            <a href="/completedQuizes">Completed Quizes</a>
+                            <a href="/completedQuizes">Completed Quizzes</a>
                         </li>
                     </ul>
                 </div>

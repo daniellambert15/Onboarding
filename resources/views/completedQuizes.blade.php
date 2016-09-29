@@ -8,7 +8,7 @@
                 @include('alerts')
                 <div class="tab-content">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Quizes</div>
+                        <div class="panel-heading">Quizzes</div>
                         <div class="panel-body">
 
                             <table class="table table-striped">

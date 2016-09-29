@@ -6,6 +6,7 @@ use App\Models\Module;
 use App\Models\ModuleQuestion;
 use App\Models\UserModuleAnswer;
 use Illuminate\Http\Request;
+use Mail;
 
 use App\Http\Requests;
 use Auth;
