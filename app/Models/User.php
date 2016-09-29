@@ -84,6 +84,10 @@ class User extends Authenticatable
 
     }
 
+    public function modules(){
+        return $this->hasMany('App\Models\UserModuleAnswer', 'user_id', 'id');
+    }
+
     public function userModule(){
         return $this->hasOne('App\Models\Module', 'id', 'module');
     }

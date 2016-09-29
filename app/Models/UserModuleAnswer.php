@@ -23,6 +23,6 @@ class UserModuleAnswer extends Model
     ];
 
     public function moduleQuestion(){
-        return $this->hasOne('App\Models\ModuleQuestion', 'id', 'module_question_id');
+        return $this->hasOne('App\Models\ModuleQuestion', 'id', 'module_question_id')->withTrashed();
     }
 }

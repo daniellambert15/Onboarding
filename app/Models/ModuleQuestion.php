@@ -30,7 +30,6 @@ class ModuleQuestion extends Model
 
     public function userAnswer(){
 
-
         if(Auth::user()->is_admin){
             return $this->hasMany('App\Models\UserModuleAnswer', 'module_question_id', 'id');
         }

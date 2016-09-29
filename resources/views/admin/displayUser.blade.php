@@ -58,33 +58,6 @@
                             <!-- start tab -->
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Modules</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Title</th>
-                                            <th>Answer</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($user->activities as $activity)
-                                            <tr>
-                                                <td>{{ $activity->id }}</td>
-                                                <td>{{ $activity->activity->description }}</td>
-                                                <td>{{ $activity->answer }}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <!-- end tab -->
-                            <!-- start tab -->
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
                                     <h3 class="panel-title">Quizzes</h3>
                                 </div>
                                 <div class="panel-body">
@@ -121,6 +94,33 @@
                                                         </a>
                                                     @endif
                                                 </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- end tab -->
+                            <!-- start tab -->
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Modules</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Title</th>
+                                            <th>Answer</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($user->modules as $module)
+                                            <tr>
+                                                <td>{{ $module->id }}</td>
+                                                <td>{{ $module->moduleQuestion->name}}</td>
+                                                <td>{{ $module->answer }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
