@@ -15,7 +15,7 @@
                                 {{ csrf_field() }}
                                 <input type="hidden" value="{{ $question->id }}" name="id">
                                 <div class="form-group">
-                                    <label for="answer">Answer</label>
+                                    <label for="answer">Explain briefly what you've done</label>
                                     <textarea class="form-control" name="answer"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-default">Submit</button>

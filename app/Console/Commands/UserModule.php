@@ -2,7 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Models\ModuleQuestion;
+use App\Models\User;
 use Mail;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class UserModule extends Command
@@ -12,14 +15,14 @@ class UserModule extends Command
      *
      * @var string
      */
-    protected $signature = 'emails:send';
+    protected $signature = 'schedule:userModule';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Test sending email';
+    protected $description = 'Will check if the user can proceed to the next module';
 
     /**
      * Create a new command instance.
@@ -38,12 +41,23 @@ class UserModule extends Command
      */
     public function handle()
     {
-        Mail::send('mail.test', [] , function ($message)
+        // this is schedule is to see whether a user can proceed to the next module.
+
+        $dt = new Carbon;
+
+        foreach(User::All() as $user)
         {
-            $message->from(env('ADMIN_EMAIL'), env('ADMIN_NAME'));
+            // so, we've got the users details now, what we want to do is check which module they're on
+            // and how many they've completed through this month.
 
-            $message->to('daniel.lambert@gas-elec.co.uk');
+            $modules = ModuleQuestion::where('module_id', $user->module)->get();
 
-        });
+            dd($modules);
+
+        }
+
+        //dd($dt->firstOfMonth());
+
+
     }
 }

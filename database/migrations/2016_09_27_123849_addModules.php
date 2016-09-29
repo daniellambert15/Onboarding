@@ -24,7 +24,7 @@ class AddModules extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('module_id');
-            $table->string('question');
+            $table->text('question');
             $table->timestamps();
             $table->SoftDeletes();
         });
@@ -33,7 +33,7 @@ class AddModules extends Migration
             $table->increments('id');
             $table->integer('module_question_id');
             $table->integer('user_id');
-            $table->string('answer');
+            $table->text('answer');
             $table->boolean('approved')->default(0);
             $table->timestamps();
             $table->SoftDeletes();

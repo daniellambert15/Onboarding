@@ -52,7 +52,7 @@
                                 <div class="form-group">
                                     <label for="module">Module</label>
                                     <select name="module" class="form-control">
-                                        <option selected value="{{ $user->module }}"> -- NO CHANGE --</option>
+                                        <option selected value="{{ $user->module }}"> -- NO CHANGE (Module ID: {{ $user->module }}) --</option>
                                         @foreach($modules as $module)
                                             <option value="{{ $module->id }}">{{ $module->name }}</option>
                                         @endforeach
