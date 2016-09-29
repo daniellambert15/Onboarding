@@ -18,12 +18,12 @@ Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
 Route::get('/faq', 'FaqController@index');
 
-Route::get('/makeAdmin/{id}', function($id){
-    $user = App\Models\User::find($id);
-    $user->is_admin = 1;
-    $user->save();
-    return redirect('/');
-});
+//Route::get('/makeAdmin/{id}', function($id){
+//    $user = App\Models\User::find($id);
+//    $user->is_admin = 1;
+//    $user->save();
+//    return redirect('/');
+//});
 
 // Stage 1
 Route::group(['middleware' => 'stage1'], function () {
