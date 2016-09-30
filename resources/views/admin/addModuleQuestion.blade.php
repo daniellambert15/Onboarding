@@ -22,9 +22,7 @@
 
                                 <div class="form-group">
                                     <label for="question">Guidance</label>
-                                    <textarea class="form-control" id="question" name="question" >{{ old('question') }}</textarea>
-
-                                    @ckeditor('question')
+                                    <textarea class="form-control" name="question" >{{ old('question') }}</textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-default">Add Activity</button>
