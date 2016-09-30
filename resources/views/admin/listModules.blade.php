@@ -18,7 +18,7 @@
                                                 <table class="table table-striped">
                                                     <thead>
                                                     <tr>
-                                                        <th>Name</th>
+                                                        <th>Activity</th>
                                                         <th>Action</th>
                                                     </tr>
                                                     </thead>
