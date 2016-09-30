@@ -16,16 +16,16 @@
                                 {{ csrf_field() }}
                                 <input type="hidden" name="id" value="{{ $question->id }}">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">Activity</label>
                                     <input type="text" class="form-control" id="name" name="name" value="{{ $question->name }}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="question">Question</label>
+                                    <label for="question">Guidance</label>
                                     <textarea class="form-control" name="question" >{{ $question->question }}</textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-default">Edit Question</button>
+                                <button type="submit" class="btn btn-default">Edit Activity</button>
                             </form>
                         </div>
                     </div>

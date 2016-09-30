@@ -11,7 +11,7 @@
                         <div class="panel-heading">{{ $question->name }}</div>
                         <div class="panel-body">
                             <p>{{ $question->question }}</p>
-                            <form method="post" action="/submitModuleAnswer">
+                                <form method="post" action="/submitModuleAnswer">
                                 {{ csrf_field() }}
                                 <input type="hidden" value="{{ $question->id }}" name="id">
                                 <div class="form-group">
