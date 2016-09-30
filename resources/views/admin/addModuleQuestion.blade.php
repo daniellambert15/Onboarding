@@ -22,9 +22,9 @@
 
                                 <div class="form-group">
                                     <label for="question">Guidance</label>
-                                    <textarea class="form-control" id="summernote" name="question" >{{ old('question') }}</textarea>
-
+                                    <textarea class="form-control" name="question" >{{ old('question') }}</textarea>
 111
+                                    <div id="summernote"><p>Hello Summernote</p></div>
                                     <script>
                                         $(document).ready(function() {
                                             $('#summernote').summernote();
