@@ -22,7 +22,14 @@
 
                                 <div class="form-group">
                                     <label for="question">Guidance</label>
-                                    <textarea class="form-control" name="question" >{{ old('question') }}</textarea>
+                                    <textarea class="form-control" id="summernote" name="question" >{{ old('question') }}</textarea>
+
+
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#summernote').summernote();
+                                        });
+                                    </script>
                                 </div>
 
                                 <button type="submit" class="btn btn-default">Add Activity</button>
