@@ -28,13 +28,13 @@
                                                             <td>{{ $question->name }}</td>
                                                             <td>
                                                                 <a href="/admin/editModuleQuestion/{{$question->id}}">Edit</a> -
-                                                                <a href="/admin/removeModuleQuestion/{{$question->id}}" onclick="return confirm('Are you sure you want to remove this question?');">Remove</a>
+                                                                <a href="/admin/removeModuleQuestion/{{$question->id}}" onclick="return confirm('Are you sure you want to remove this activity?');">Remove</a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
                                                 </table>
-                                                <a href="/admin/addModuleQuestion/{{ $module->id }}" class="btn btn-primary">Add Question</a>
+                                                <a href="/admin/addModuleQuestion/{{ $module->id }}" class="btn btn-primary">Add activity</a>
 
                                             </div>
                                         </div>
