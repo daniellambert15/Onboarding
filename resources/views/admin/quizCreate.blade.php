@@ -22,7 +22,12 @@
 
                                 <div class="form-group">
                                     <label for="questions">Questions</label>
-                                    <textarea class="form-control" name="questions" >{{ old('questions') }}</textarea>
+                                    <textarea name="questions" id="questions" rows="10" cols="80">{{ old('questions') }}</textarea>
+                                    <script>
+                                        // Replace the <textarea id="editor1"> with a CKEditor
+                                        // instance, using default configuration.
+                                        CKEDITOR.replace( 'questions' );
+                                    </script>
                                 </div>
 
                                 <div class="form-group">
