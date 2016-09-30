@@ -19,6 +19,7 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <script src="//cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
