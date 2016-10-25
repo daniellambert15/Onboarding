@@ -56,8 +56,5 @@ class UserModule extends Command
 
         }
 
-        //dd($dt->firstOfMonth());
-
-
     }
 }
