@@ -26,7 +26,6 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('schedule:userModule')->monthlyOn(1, '08:30');
-        $schedule->command('schedule:testTask')->everyMinute();
     }
 
     /**

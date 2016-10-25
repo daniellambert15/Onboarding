@@ -52,7 +52,7 @@ class UserModule extends Command
 
             $modules = ModuleQuestion::where('module_id', $user->module)->get();
 
-            dd($modules);
+            dd($user);
 
         }
 
