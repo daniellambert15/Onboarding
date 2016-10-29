@@ -12,7 +12,7 @@
                         <div class="panel-body">
                             <form method="post" action="/postQuiz">
                                 <div class="well">
-                                    Q) {{ $quiz->questions }}
+                                    Q) {!! $quiz->questions !!}
                                 </div>
                                 {{ csrf_field() }}
                                 <input type="hidden" name="quiz_id" value="{{ $quiz->id }}">

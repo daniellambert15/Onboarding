@@ -42,10 +42,10 @@
                                             {{ $quiz->quiz->title }}
                                         </td>
                                         <td>
-                                            {{ $quiz->quiz->questions }}
+                                            {!! $quiz->quiz->questions !!}
                                         </td>
                                         <td>
-                                            <div class="well">{{ $quiz->answer }}</div>
+                                            <div class="well">{!! $quiz->answer !!}</div>
                                         </td>
                                         <td>
                                             {{ $quiz->created_at }}

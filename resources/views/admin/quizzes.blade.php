@@ -29,8 +29,8 @@
                                         <tr>
                                             <td>{{ $quiz->id }}</td>
                                             <td>{{ $quiz->title }}</td>
-                                            <td>{{ $quiz->questions}}</td>
-                                            <td>{{ $quiz->answers }}</td>
+                                            <td>{!! $quiz->questions !!}</td>
+                                            <td>{!! $quiz->answers !!}</td>
                                             <td>{{ $quiz->created_at }}</td>
                                             <td>
 
