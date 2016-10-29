@@ -33,7 +33,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @foreach($question->userAnswer as $answer)
+                                                            @foreach($question->userAnswer() as $answer)
                                                                 <tr>
                                                                     <td>{{ $answer->answer }}</td>
                                                                     <td>{{ $answer->created_at }}</td>

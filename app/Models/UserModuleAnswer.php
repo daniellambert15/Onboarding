@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class UserModuleAnswer extends Model
 {
     use SoftDeletes;
+
     protected $table = 'user_module_answer';
 
 

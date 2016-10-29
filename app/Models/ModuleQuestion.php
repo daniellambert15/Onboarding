@@ -30,12 +30,12 @@ class ModuleQuestion extends Model
 
     public function userAnswer(){
 
-        if(Auth::user()->is_admin){
-            return $this->hasMany('App\Models\UserModuleAnswer', 'module_question_id', 'id');
-        }
+        return UserModuleAnswer::
+            where('module_question_id', $this->id)
+            ->where('user_id', Auth::user()->id)
+            ->get();
 
-        return $this->hasMany('App\Models\UserModuleAnswer', 'module_question_id', 'id')->where('approved', 1);
-
+        //return $this->hasMany('App\Models\UserModuleAnswer', 'module_question_id', 'id');
     }
 
 }
