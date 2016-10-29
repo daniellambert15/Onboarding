@@ -22,8 +22,11 @@
                             <div class="panel-body">
                                 <ul class="nav nav-pills nav-stacked">
                                     @foreach($module->questions as $question)
-                                        <li role="presentation">
-                                            <a href="/moduleQuestion/{{ $question->id }}">{{ $question->name }}</a>
+                                        <li  class="{{ (Auth::user()->completedQuestion($question))
+                                        ? 'bg-success' : 'bg-danger' }}">
+                                            <a href="/moduleQuestion/{{ $question->id }}">
+                                                {{ $question->name }}
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>

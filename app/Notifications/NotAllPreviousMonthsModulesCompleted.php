@@ -54,8 +54,7 @@ class NotAllPreviousMonthsModulesCompleted extends Notification
                      task(s) to complete and proceed to the next module.')
                     ->action('Click here to complete',
                         'https://onboarding.fcacomplianceservices.com/module')
-                    ->line('Please click the above link to be taken to the modules you need to complete.
-                    <small>Please check which ones you need to complete.</small> ');
+                    ->line('Please click the above link to be taken to the modules you need to complete.');
     }
 
     /**

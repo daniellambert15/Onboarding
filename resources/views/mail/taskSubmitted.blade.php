@@ -7,5 +7,5 @@
 </p>
 
 <p>
-    There has been a new task submitted by {{ $user->name }}. Please go and review their answer.
+    There has been a new task submitted by {{ $user->name }} - {{ $user->email }}. Please go and review their answer.
 </p>

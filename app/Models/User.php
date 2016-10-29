@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use App\Models\UserModuleAnswer;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -130,6 +132,38 @@ class User extends Authenticatable
             ])->get();
     }
 
+
+    public function completedQuestion($question){
+
+        // has user completed this question?
+        $completedQuestion = UserModuleAnswer::
+        where('module_question_id' , $question->id)
+            ->where('user_id', $this->id)
+            ->get();
+
+        // now we need to get the questions that are under 6 months old, as we dont want
+        // to pick up las years answers
+
+        $today = carbon::now();
+
+        $count = 0;
+
+        foreach($completedQuestion as $question) {
+            $questionDate = Carbon::createFromFormat('Y-m-d H:i:s', $question->updated_at);
+            // USER MODULE - HAS TO BE COMPLETED WITHIN 6 MONTHS!!
+            if ($today->diffInMonths($questionDate) < 6) {
+                $count++;
+            }
+        }
+
+        if($count > 0)
+        {
+            return true;
+
+        }
+
+        return false;
+    }
 
 
 
