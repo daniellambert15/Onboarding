@@ -75,8 +75,8 @@
                                             <tr>
                                                 <td>{{ $quiz->id }}</td>
                                                 <td>{{ $quiz->quiz->title }}</td>
-                                                <td>{{ $quiz->quiz->questions }}</td>
-                                                <td>{{ $quiz->answer }}</td>
+                                                <td>{!!  $quiz->quiz->questions  !!}</td>
+                                                <td>{!! $quiz->answer !!}</td>
                                                 <td>
                                                     @if($quiz->approved == 0)
                                                         <a
@@ -119,8 +119,8 @@
                                         @foreach($user->modules as $module)
                                             <tr>
                                                 <td>{{ $module->id }}</td>
-                                                <td>{{ $module->moduleQuestion->name}}</td>
-                                                <td>{{ $module->answer }}</td>
+                                                <td>{!! $module->moduleQuestion->name !!}</td>
+                                                <td>{!! $module->answer !!}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
