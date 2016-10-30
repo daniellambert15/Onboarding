@@ -22,7 +22,7 @@
                                             </p>
 
                                             <p>
-                                                <a class="btn btn-default" href="{{ asset('storage/'.str_replace('public', '', $file->original)) }}" role="button">Click here to download</a>
+                                                <a class="btn btn-default" href="{{ asset('storage/'.str_replace('public/', '', $file->original)) }}" role="button">Click here to download</a>
                                             </p>
 
                                             <div class="form-group ">
