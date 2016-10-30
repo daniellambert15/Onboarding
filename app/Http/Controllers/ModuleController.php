@@ -78,7 +78,15 @@ class ModuleController extends Controller
      */
     public function edit($id)
     {
-        return view('editModuleAnswer', ['answer' => UserModuleAnswer::find($id)]);
+        // check to see if user can update that question
+
+        $userAnswer = UserModuleAnswer::find($id);
+        if($userAnswer->user_id != Auth::user()->id)
+        {
+            return redirect('module')->with('error','You cannot alter that module!');
+        }
+
+        return view('editModuleAnswer', ['answer' => $userAnswer]);
     }
 
     /**
@@ -90,6 +98,13 @@ class ModuleController extends Controller
      */
     public function update(Request $request)
     {
+        $userAnswer = UserModuleAnswer::find($request->input('id'));
+
+        if($userAnswer->user_id != Auth::user()->id)
+        {
+            return redirect('module')->with('error','You cannot alter that module!');
+        }
+
         $userAnswer = UserModuleAnswer::find($request->input('id'));
         $userAnswer->answer = $request->input('answer');
         $userAnswer->save();

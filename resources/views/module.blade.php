@@ -24,7 +24,10 @@
                                     @foreach($module->questions as $question)
                                         <li  class="{{ (Auth::user()->completedQuestion($question))
                                         ? 'bg-success' : 'bg-danger' }}">
-                                            <a href="/moduleQuestion/{{ $question->id }}">
+
+                                            <a href="/{{ (Auth::user()->completedQuestion($question))
+                                        ? 'updateUserAnswer' : 'moduleQuestion' }}/{{ Auth::user()->
+                                        completedQuestionId($question->id) }}">
                                                 {{ $question->name }}
                                             </a>
                                         </li>

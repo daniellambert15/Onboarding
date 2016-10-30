@@ -137,8 +137,8 @@ class User extends Authenticatable
 
         // has user completed this question?
         $completedQuestion = UserModuleAnswer::
-        where('module_question_id' , $question->id)
-            ->where('user_id', $this->id)
+            where('module_question_id' , $question->id)
+            ->where('user_id', Auth::user()->id)
             ->get();
 
         // now we need to get the questions that are under 6 months old, as we dont want
@@ -156,6 +156,7 @@ class User extends Authenticatable
             }
         }
 
+
         if($count > 0)
         {
             return true;
@@ -165,6 +166,13 @@ class User extends Authenticatable
         return false;
     }
 
+    public function completedQuestionId($id)
+    {
+        $question = UserModuleAnswer::where('module_question_id', $id)->
+            where('user_id', Auth::user()->id)->first();
 
+        return $question->id;
+
+    }
 
 }
