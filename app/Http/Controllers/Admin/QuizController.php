@@ -43,7 +43,6 @@ class QuizController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'questions' => 'required',
-            'answers' => 'required',
         ]);
 
         $quiz = new Quiz();
@@ -89,7 +88,6 @@ class QuizController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'questions' => 'required',
-            'answers' => 'required',
         ]);
 
         $quiz = Quiz::find($request->input('id'));
