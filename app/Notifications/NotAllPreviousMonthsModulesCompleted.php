@@ -46,7 +46,8 @@ class NotAllPreviousMonthsModulesCompleted extends Notification
     {
         $count = $this->info['count'];
 
-//        dd($notifiable->name);
+        // fire off an email to the managers
+        Mail::to(env('ADMIN_EMAIL'))->send(new notCompletedModules(Auth::user()));
 
         return (new MailMessage)
                     ->line('Hi '.$notifiable->name)

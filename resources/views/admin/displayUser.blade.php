@@ -28,6 +28,9 @@
                                             <div class="panel-body">{{ $file->description }}<br />
                                             @foreach($user->userFile($file->id) as $userFile)
                                                 <p>
+                                                    Lsat Modified: {{ $userFile->updated_at }}
+                                                </p>
+                                                <p>
                                                     <a class="btn @if($userFile->approved == 1) btn-success @else btn-danger @endif"
                                                        href="{{ asset('storage/'.str_replace('public', '', $userFile->fileLocation)) }}"
                                                        role="button">Click here to download - Submitted: {{ $userFile->created_at }}</a>
@@ -68,6 +71,8 @@
                                             <th>Title</th>
                                             <th>Question</th>
                                             <th>Answer</th>
+                                            <th>Last Updated</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -75,8 +80,9 @@
                                             <tr>
                                                 <td>{{ $quiz->id }}</td>
                                                 <td>{{ $quiz->quiz->title }}</td>
-                                                <td>{!!  $quiz->quiz->questions  !!}</td>
+                                                <td>{!! $quiz->quiz->questions !!}</td>
                                                 <td>{!! $quiz->answer !!}</td>
+                                                <td>{{ $quiz->updated_at }}</td>
                                                 <td>
                                                     @if($quiz->approved == 0)
                                                         <a
@@ -113,6 +119,7 @@
                                             <th>#</th>
                                             <th>Title</th>
                                             <th>Answer</th>
+                                            <th>Last Updated</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -121,6 +128,7 @@
                                                 <td>{{ $module->id }}</td>
                                                 <td>{!! $module->moduleQuestion->name !!}</td>
                                                 <td>{!! $module->answer !!}</td>
+                                                <td>{{ $module->updated_at }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
