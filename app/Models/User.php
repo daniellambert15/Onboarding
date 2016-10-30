@@ -168,11 +168,18 @@ class User extends Authenticatable
 
     public function completedQuestionId($id)
     {
-        $question = UserModuleAnswer::where('module_question_id', $id)->
-            where('user_id', Auth::user()->id)->first();
 
-        return $question->id;
-
+        $question = UserModuleAnswer::
+            where(
+                [
+                    'module_question_id' => $id,
+                    'user_id' => Auth::user()->id
+                ])->first();
+        if($question) {
+            return $question->id;
+        }else{
+            return $id;
+        }
     }
 
 }
