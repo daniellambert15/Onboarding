@@ -8,6 +8,7 @@ use App\Models\UserModuleAnswer;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\taskSubmitted;
+use App\Notifications\userTaskSubmitted;
 
 use App\Http\Requests;
 use Auth;
