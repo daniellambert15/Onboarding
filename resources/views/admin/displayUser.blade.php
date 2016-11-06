@@ -70,11 +70,11 @@
                                             <th>#</th>
                                             <th>Title</th>
                                             <th>Answers</th>
-                                            <th></th>
+                                            <th>Submitted</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($user->quizzes->where('completed', "IS NOT" , null) as $quiz)
+                                        @foreach($user->quizzes->where('submitted', "<>" , "") as $quiz)
                                             <tr>
                                                 <td>{{ $quiz->id }}</td>
                                                 <td>{{ $quiz->quiz->name }}</td>
@@ -86,7 +86,7 @@
                                                         </p>
                                                         @endforeach
                                                 </div></td>
-                                                <td>{{ $quiz->updated_at }}</td>
+                                                <td>{{ $quiz->submitted }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
