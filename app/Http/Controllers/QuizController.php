@@ -45,6 +45,7 @@ class QuizController extends Controller
         // first we check if the user is allowed to submit
         $user_quiz = UserQuiz::find($request->input('qId'));
 
+
         if($user_quiz->user_id != Auth::user()->id)
         {
             return redirect('/logout');
