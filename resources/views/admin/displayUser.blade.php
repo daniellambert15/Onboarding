@@ -69,37 +69,24 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Title</th>
-                                            <th>Question</th>
-                                            <th>Answer</th>
-                                            <th>Last Updated</th>
+                                            <th>Answers</th>
                                             <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($user->quizzes as $quiz)
+                                        @foreach($user->quizzes->where('completed', "IS NOT" , null) as $quiz)
                                             <tr>
                                                 <td>{{ $quiz->id }}</td>
-                                                <td>{{ $quiz->quiz->title }}</td>
-                                                <td>{!! $quiz->quiz->questions !!}</td>
-                                                <td>{!! $quiz->answer !!}</td>
+                                                <td>{{ $quiz->quiz->name }}</td>
+                                                <td><div class="well">
+                                                    @foreach($quiz->quizAnswers as $answer)
+                                                        <p>
+                                                            {!! $answer->name !!}<br />
+                                                            {!! $answer->answer !!}
+                                                        </p>
+                                                        @endforeach
+                                                </div></td>
                                                 <td>{{ $quiz->updated_at }}</td>
-                                                <td>
-                                                    @if($quiz->approved == 0)
-                                                        <a
-                                                                class="btn btn-info"
-                                                                href="/quiz/approve/{{$user->id}}/{{$quiz->id}}"
-                                                        >
-                                                            Approve
-                                                        </a>
-                                                    @else
-                                                        <a
-                                                                class="btn btn-info"
-                                                                href="/quiz/unapprove/{{$user->id}}/{{$quiz->id}}"
-                                                        >
-                                                            Unapprove
-                                                        </a>
-                                                    @endif
-                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>

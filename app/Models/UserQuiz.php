@@ -26,5 +26,9 @@ class UserQuiz extends Model
         return $this->hasOne('App\Models\Quiz', 'id', 'quiz_id');
     }
 
+    public function quizAnswers(){
+        return $this->hasMany('App\Models\UserQuizAnswers', 'user_quiz', 'id');
+    }
+
 
 }
