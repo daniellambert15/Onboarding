@@ -32,6 +32,7 @@
                                             <td>{{ $user->contact_number }}</td>
                                             <td>{{ $user->userModule['name'] }}</td>
                                             <td>
+                                                <a href="/quizUser/{{ $user->id }}">Quiz</a> -
                                                 <a href="/viewUser/{{ $user->id }}">View</a> -
                                                 <a href="/editUser/{{ $user->id }}">Edit</a> -
                                                 <a href="/pauseUser/{{ $user->id }}">Pause</a>

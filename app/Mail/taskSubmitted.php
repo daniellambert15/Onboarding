@@ -39,6 +39,6 @@ class taskSubmitted extends Mailable
     {
         return $this
             ->from(env('ADMIN_EMAIL'))
-            ->view('mail.taskSubmitted');
+            ->view('mail.quizSubmitted');
     }
 }

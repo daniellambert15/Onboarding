@@ -74,18 +74,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\UserFile', 'user_id', 'id');
     }
 
-    public function quizzes(){
-
-
-        if(Auth::user()->is_admin){
-            return $this->hasMany('App\Models\UserQuiz', 'user_id', 'id');
-        }
-
-        return $this->hasMany('App\Models\UserQuiz', 'user_id', 'id')->where('approved', 1);
-
-
-    }
-
     public function modules(){
         return $this->hasMany('App\Models\UserModuleAnswer', 'user_id', 'id');
     }
@@ -109,25 +97,6 @@ class User extends Authenticatable
             [
                 'user_id' => $this->id,
                 'file_id' => $id,
-                'approved' => 1
-            ])->get();
-    }
-
-    public function userQuiz($id)
-    {
-
-        if(Auth::user()->is_admin){
-            return UserQuiz::where(
-                [
-                    'user_id' => $this->id,
-                    'quiz_id' => $id
-                ])->get();
-        }
-
-        return UserQuiz::where(
-            [
-                'user_id' => $this->id,
-                'quiz_id' => $id,
                 'approved' => 1
             ])->get();
     }
@@ -168,7 +137,6 @@ class User extends Authenticatable
 
     public function completedQuestionId($id)
     {
-
         $question = UserModuleAnswer::
             where(
                 [
@@ -180,6 +148,11 @@ class User extends Authenticatable
         }else{
             return $id;
         }
+    }
+
+
+    public function quizzes(){
+        return $this->hasMany('App\Models\UserQuiz');
     }
 
 }

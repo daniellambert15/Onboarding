@@ -96,7 +96,15 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::get('/adminAddQuiz', 'Admin\QuizController@create');
     Route::post('/adminQuiz', 'Admin\QuizController@store');
     Route::post('/adminUpdateQuiz', 'Admin\QuizController@update');
+    Route::post('/adminAddQuizQuestion', 'Admin\QuizController@adminAddQuizQuestion');
     Route::get('/removeAdminQuiz/{id}', 'Admin\QuizController@destroy');
+    Route::get('/updateQuizQuestion/{id}/{qId}', 'Admin\QuizController@updateQuizQuestion');
+    Route::post('/adminUpdateQuizQuestion', 'Admin\QuizController@adminUpdateQuizQuestion');
+    Route::get('/destroyQuestion/{id}/{qId}', 'Admin\QuizController@destroyQuestion');
+
+    Route::get('/quizUser/{id}','Admin\QuizController@quizUser');
+    Route::get('/sendQuizUser/{id}/{qId}','Admin\QuizController@sendQuizUser');
+
 
     //Admin - Activities
 //    Route::get('/adminActivities', 'Admin\ActivityController@index');

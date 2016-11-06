@@ -10,34 +10,64 @@
                 <div class="tab-content">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Editing: {{ $quiz->title }}</h3>
+                            <h3 class="panel-title">Editing: {{ $quiz->name }}</h3>
                         </div>
                         <div class="panel-body">
                             <form method="post" action="/adminUpdateQuiz" enctype="multipart/form-data">
                                 <input type="hidden" class="form-control" id="id" name="id" value="{{ $quiz->id }}">
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" class="form-control" id="title" name="title" value="{{ $quiz->title }}">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ $quiz->name }}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="questions">Questions</label>
-
-                                    <textarea name="questions" id="questions" rows="10" cols="80">{{ $quiz->questions }}</textarea>
+                                    <label for="description">Quiz Description</label>
+                                    <textarea name="description" id="description" rows="10" cols="80">{{ $quiz->description }}</textarea>
                                     <script>
-                                        // Replace the <textarea id="editor1"> with a CKEditor
-                                        // instance, using default configuration.
-                                        CKEDITOR.replace( 'questions' );
+                                        CKEDITOR.replace( 'description' );
                                     </script>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="answers">Answers</label>
-                                    <textarea class="form-control" name="answers" >{{ $quiz->answers }}</textarea>
-                                </div>
-
                                 <button type="submit" class="btn btn-default">Update</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Questions</h3>
+                        </div>
+                        <div class="panel-body">
+                            @foreach($quiz->questions as $question)
+                                <div class="form-group">
+                                    <label>{{ $question->name }}</label>
+                                    <p>{!! $question->question !!}</p>
+                                    <a href="/updateQuizQuestion/{{$question->id}}/{{ $quiz->id }}" class="btn btn-primary">Update</a>
+                                    <a onclick="return confirm('Are you sure you want to remove this question?')" href="/destroyQuestion/{{$question->id}}/{{ $quiz->id }}" class="btn btn-danger">delete</a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">New Question</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form method="post" action="/adminAddQuizQuestion" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    {{ csrf_field() }}
+                                    <label for="newName">Name</label>
+                                    <input type="hidden" value="{{ $quiz->id }}" name="id">
+                                    <input type="text" name="newName" class="form-control" id="newName" />
+                                    <label for="newQuestion">Question</label>
+                                    <textarea name="newQuestion" id="newQuestion" rows="10" cols="80"></textarea>
+                                    <script>
+                                        CKEDITOR.replace( 'newQuestion' );
+                                    </script>
+                                </div>
+                                <button type="submit" class="btn btn-default">Add Question</button>
                             </form>
                         </div>
                     </div>

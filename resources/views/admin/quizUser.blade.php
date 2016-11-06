@@ -10,7 +10,7 @@
                 <div class="tab-content">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">List of quizzes</h3>
+                            <h3 class="panel-title">Quiz List</h3>
                         </div>
                         <div class="panel-body">
                             <table class="table table-striped">
@@ -24,21 +24,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($quizzes as $quiz)
-                                        <tr>
-                                            <td>{{ $quiz->id }}</td>
-                                            <td>{{ $quiz->name }}</td>
-                                            <td>{!! $quiz->description !!}</td>
-                                            <td>{{ $quiz->created_at }}</td>
-                                            <td>
-                                                <a href="/adminQuiz/{{ $quiz->id }}">Edit</a>
-                                                <a onclick="return confirm('Are you sure you want to delete this quiz?');" href="/removeAdminQuiz/{{ $quiz->id }}">Delete</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                @foreach($quizzes as $quiz)
+                                    <tr>
+                                        <td>{{ $quiz->id }}</td>
+                                        <td>{{ $quiz->name }}</td>
+                                        <td>{!! $quiz->description !!}</td>
+                                        <td>{{ $quiz->created_at }}</td>
+                                        <td>
+                                            <a href="/sendQuizUser/{{ $user->id }}/{{ $quiz->id }}" class="btn btn-primary"
+                                               onclick="return confirm('Are you sure you want to send {{ $quiz->name }} to {{ $user->name }}?');"
+                                               >SEND</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
-                            <a href="/adminAddQuiz" class="btn btn-sm btn-primary">Add New Quiz</a>
                         </div>
                     </div>
                 </div>

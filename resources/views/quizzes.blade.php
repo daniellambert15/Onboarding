@@ -10,8 +10,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Quizzes</div>
                         <div class="panel-body">
-
-                            @if(count($quizes) > 0)
+                            @if(count($user->quizzes) > 0)
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -27,13 +26,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($quizes as $quiz)
+                                        @foreach($user->quizzes->where('submitted', null) as $quiz)
                                             <tr>
                                                 <td>
                                                     {{ $quiz->id }}
                                                 </td>
                                                 <td>
-                                                    {{ $quiz->title }}
+                                                    {{ $quiz->quiz->name }}
                                                 </td>
                                                 <td>
                                                     <a href="/quiz/{{ $quiz->id }}">Take quiz</a>
@@ -44,7 +43,7 @@
                                 </table>
                             @else
                                 <p>
-                                    Sorry no quzzes to display
+                                    Sorry no quizzes to display
                                 </p>
                             @endif
                         </div>

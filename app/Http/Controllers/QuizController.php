@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserQuizAnswers;
 use Auth;
-use App\Models\User;
-
+use Mail;
+use Carbon\Carbon;
 use App\Models\Quiz;
 use App\Http\Requests;
 use App\Models\UserQuiz;
-use App\Mail\taskSubmitted;
+use App\Mail\quizSubmitted;
 use Illuminate\Http\Request;
-use App\Notifications\userTaskSubmitted;
 
 class QuizController extends Controller
 {
@@ -21,22 +21,7 @@ class QuizController extends Controller
      */
     public function index()
     {
-        return view('quizes', [
-            'user' => Auth::user(),
-            'quizes' => Quiz::all()
-        ]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function userQuizList()
-    {
-        return view('completedQuizes', [
-            'user' => User::find(Auth::user()->id)
-        ]);
+        return view('quizzes', ['user' => Auth::user()]);
     }
 
     /**
@@ -57,15 +42,29 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        $quiz = new UserQuiz();
-        $quiz->user_id = $request->user()->id;
-        $quiz->quiz_id = $request->input('quiz_id');
-        $quiz->answer = $request->input('answer');
-        $quiz->save();
+        // first we check if the user is allowed to submit
+        $user_quiz = UserQuiz::find($request->input('qId'));
 
-        Auth::user()->notify(new userTaskSubmitted);
+        if($user_quiz->user_id != Auth::user()->id)
+        {
+            return redirect('/logout');
+        }
 
-        return redirect('/quizes')->with('success', 'You\'ve successfully submitted the quiz');
+        foreach($request->answerId as $answerId)
+        {
+            $answer = UserQuizAnswers::find($answerId);
+            $answer->answer = $request->input('answer-'.$answerId);
+            $answer->save();
+        }
+
+
+        if($request->input('choice') == 1){
+            $user_quiz->submitted = carbon::Now();
+            $user_quiz->save();
+            Mail::to(env('ADMIN_EMAIL'))->send(new quizSubmitted(Auth::user()));
+        }
+
+        return redirect('/quizes')->with('success', 'You have saved or sent that question');
     }
 
     /**
@@ -76,10 +75,16 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        return view('quiz', [
-            'user' => Auth::user(),
-            'quiz' => Quiz::find($id)
-        ]);
+        $userQuiz = UserQuiz::find($id);
+
+        if($userQuiz->user_id != Auth::user()->id)
+        {
+            return redirect('/quizes')->with('error','you cannot update someone elses quiz');
+        }
+
+        $quiz = UserQuizAnswers::where('user_quiz', $id)->get();
+
+        return view('quiz', ['quizQuestions' => $quiz, 'quiz' => Quiz::find($userQuiz->quiz_id)]);
     }
 
     /**
@@ -90,7 +95,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        return view('updateQuiz', ['quiz' => UserQuiz::find($id)]);
+
     }
 
     /**
@@ -102,11 +107,7 @@ class QuizController extends Controller
      */
     public function update(Request $request)
     {
-        $quiz = UserQuiz::find($request->input('id'));
-        $quiz->answer = $request->input('answer');
-        $quiz->save();
 
-        return redirect('/completedQuizes')->with('success', 'You\'ve successfully updated your quiz');
     }
 
     /**
@@ -117,6 +118,6 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

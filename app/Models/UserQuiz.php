@@ -22,9 +22,8 @@ class UserQuiz extends Model
 
     protected $table = 'user_quiz';
 
-    public function quiz()
-    {
-        return $this->hasOne('App\Models\Quiz', 'id', 'quiz_id')->withTrashed();
+    public function quiz(){
+        return $this->hasOne('App\Models\Quiz', 'id', 'quiz_id');
     }
 
 
