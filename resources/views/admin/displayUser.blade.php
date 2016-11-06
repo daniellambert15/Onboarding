@@ -81,7 +81,7 @@
                                                 <td><div class="well">
                                                     @foreach($quiz->quizAnswers as $answer)
                                                         <p>
-                                                            Question: {!! $answer->name !!}<br />
+                                                            <strong>Question: {!! $answer->name !!}</strong><br />
                                                             Answer: {!! $answer->answer !!}
                                                         </p>
                                                         @endforeach
