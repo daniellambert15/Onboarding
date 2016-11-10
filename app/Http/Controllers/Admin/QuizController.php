@@ -82,7 +82,13 @@ class QuizController extends Controller
      */
     public function update(Request $request)
     {
+        $question = Quiz::find($request->input('id'));
+        $question->name = $request->input('name');
+        $question->description = $request->input('description');
+        $question->save();
 
+        return redirect('/adminQuiz/'.$request->input('id'))
+            ->with('success', 'you have edited that quiz');
     }
 
     /**
