@@ -32,7 +32,7 @@
                                                     {{ $quiz->id }}
                                                 </td>
                                                 <td>
-                                                    {{ $quiz->quiz->name }}
+                                                    {{ $quiz->name }}
                                                 </td>
                                                 <td>
                                                     <a href="/quiz/{{ $quiz->id }}">Take quiz</a>
