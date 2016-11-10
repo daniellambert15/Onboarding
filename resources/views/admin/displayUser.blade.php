@@ -75,6 +75,7 @@
                                         </thead>
                                         <tbody>
                                         @foreach($user->quizzes as $quiz)
+                                            {{ dd($quiz) }}
                                             <tr>
                                                 <td>{{ $quiz->id }}</td>
                                                 <td>{{ $quiz->name }}</td>
