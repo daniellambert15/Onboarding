@@ -27,6 +27,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($user->quizzes->where('submitted', null) as $quiz)
+                                            {{ dd($quiz) }}
                                             <tr>
                                                 <td>
                                                     {{ $quiz->id }}
