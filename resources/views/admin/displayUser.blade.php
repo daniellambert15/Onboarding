@@ -77,7 +77,7 @@
                                         @foreach($user->quizzes as $quiz)
                                             <tr>
                                                 <td>{{ $quiz->id }}</td>
-                                                <td>{{ $quiz->quiz->name }}</td>
+                                                <td>{{ $quiz->name }}</td>
                                                 <td><div class="well">
                                                     @foreach($quiz->quizAnswers as $answer)
                                                         <p>
