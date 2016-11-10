@@ -26,6 +26,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($user->quizzes->where('submitted', null) as $quiz)
+                                            <tr>
+                                                <td>
+                                                    {{ $quiz->id }}
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td>
+                                                    <a href="/quiz/{{ $quiz->id }}">Take quiz</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             @else
