@@ -8,7 +8,7 @@
                 @include('alerts')
                 <div class="tab-content">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Quiz: {{ $quiz->name }}</div>
+                        <div class="panel-heading">Quiz: </div>
                         <div class="panel-body">
                             <form method="post" action="/postQuiz">
 
