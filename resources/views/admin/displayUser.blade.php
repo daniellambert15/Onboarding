@@ -74,7 +74,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($user->quizzes->where('submitted', "<>" , "") as $quiz)
+                                        @foreach($user->quizzes as $quiz)
                                             <tr>
                                                 <td>{{ $quiz->id }}</td>
                                                 <td>{{ $quiz->quiz->name }}</td>
