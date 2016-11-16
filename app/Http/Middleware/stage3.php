@@ -16,9 +16,11 @@ class stage3
     public function handle($request, Closure $next)
     {
 
-        if(!Auth::user()->is_admin) {
-            if (!Auth::user()->stage3) {
-                return redirect('/');
+        if(Auth::user()) {
+            if (!Auth::user()->is_admin) {
+                if (!Auth::user()->stage3) {
+                    return redirect('/');
+                }
             }
         }
 
