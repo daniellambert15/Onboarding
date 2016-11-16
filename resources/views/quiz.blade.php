@@ -31,14 +31,14 @@
                                     </div>
                                 @endforeach
                                 {{ csrf_field() }}
-                                <p>
-                                    You've now got two choices, select from the dropdown below, then click submit.
+                                <p>To finish, Select from the drop down below, then click submit.
                                     <div class="form-group">
                                         <select name="choice" class="form-control">
                                             <option value="1" selected>Save and Send</option>
                                             <option value="2">Save</option>
                                         </select>
                                     </div>
+                                    <strong>Key:</strong>
                                     <ol>
                                         <li><strong>Save and Send</strong> - This will save your questions, then email them through to the administrator who will review your answers and get back to you shortly.</li>
                                         <li><strong>Save</strong> - This will just save your answers so you can revisit/send them at a later date.</li>
