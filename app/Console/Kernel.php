@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \App\Console\Commands\UserModule::class,
+        \App\Console\Commands\SendNotification::class,
     ];
 
     /**
@@ -26,6 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('schedule:userModule')->monthlyOn(1, '08:30');
+        $schedule->command('schedule:SendNotification')->monthlyOn(25, '08:30');
     }
 
     /**

@@ -1,1 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
+public/storage
+node_modules
+vendor
+storage/*.key
+.env.*.php
+.env.php
+.env
+.idea
