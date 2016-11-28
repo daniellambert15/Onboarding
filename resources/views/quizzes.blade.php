@@ -21,6 +21,9 @@
                                                 Name
                                             </th>
                                             <th>
+                                                Description
+                                            </th>
+                                            <th>
                                                 actions
                                             </th>
                                         </tr>
@@ -33,6 +36,9 @@
                                                 </td>
                                                 <td>
                                                     {{ $quiz->quiz->name }}
+                                                </td>
+                                                <td>
+                                                    {!! $quiz->quiz->description !!}
                                                 </td>
                                                 <td>
                                                     <a href="/quiz/{{ $quiz->id }}">Take quiz</a>
