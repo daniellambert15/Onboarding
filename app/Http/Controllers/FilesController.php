@@ -40,7 +40,7 @@ class FilesController extends Controller
             '7EncoeaZ'
             );
 
-        $filename = md5(date('d-m-Y').$request->file('file')->getClientOriginalName()).'.'.$request->file('file')->getClientOriginalExtension();
+        $filename = $request->file('file')->getClientOriginalName().date('d-m-Y H:i:s').'.'.$request->file('file')->getClientOriginalExtension();
 
         $path = $request->file('file')->storeAs($fileLocation, $filename);
 
