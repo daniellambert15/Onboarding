@@ -6,11 +6,10 @@ use App\Models\ModuleQuestion;
 use App\Models\UserModuleAnswer;
 use App\Models\User;
 use App\Notifications\NotAllPreviousMonthsModulesCompleted;
-use Illuminate\Support\Facades\Notification;
+use Notification;
 use Mail;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Illuminate\Mail\Mailer;
 
 class SendNotification extends Command
 {
