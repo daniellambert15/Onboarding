@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Models\ModuleQuestion;
 use App\Models\UserModuleAnswer;
 use App\Models\User;
-use App\Notifications\NotAllPreviousMonthsModulesCompleted;
+use App\Notifications\notCompletedModule​s;
 use Notification;
 use Mail;
 use Carbon\Carbon;
