@@ -10,7 +10,7 @@ use App\Models\UserModuleAnswer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class NotAllPreviousMonthsModulesCompleted extends Notification
+class notCompletedModule extends Notification
 {
     use Queueable;
 
