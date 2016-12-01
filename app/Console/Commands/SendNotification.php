@@ -10,6 +10,7 @@ use Notification;
 use Mail;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Notifications\Notification;
 
 class SendNotification extends Command
 {
