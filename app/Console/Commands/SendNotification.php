@@ -7,6 +7,7 @@ use App\Models\UserModuleAnswer;
 use App\Models\User;
 use App\Notifications\NotAllPreviousMonthsModulesCompleted;
 use Notification;
+use Mail;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
