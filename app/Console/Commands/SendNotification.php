@@ -86,8 +86,7 @@ class SendNotification extends Command
             {
                 $tasksLeft = count($modules) - $count;
 
-                Notification::send($user, new
-                NotAllPreviousMonthsModulesCompleted(['user' => $user, 'count' => $tasksLeft]));
+                Notification::send($user, new NotAllPreviousMonthsModulesCompleted(['user' => $user, 'count' => $tasksLeft]));
 
             }
 
