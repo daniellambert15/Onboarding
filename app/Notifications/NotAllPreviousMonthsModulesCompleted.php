@@ -10,7 +10,7 @@ use App\Models\UserModuleAnswer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class notCompletedModule extends Notification
+class NotAllPreviousMonthsModulesCompleted extends Notification
 {
     use Queueable;
 
@@ -48,7 +48,7 @@ class notCompletedModule extends Notification
         $count = $this->info['count'];
 
         // fire off an email to the managers
-        Mail::to(env('ADMIN_EMAIL'))->send(new notCompletedModules(Auth::user()));
+        //Mail::to(env('ADMIN_EMAIL'))->send(new notCompletedModules(Auth::user()));
 
         return (new MailMessage)
                     ->line('Hi '.$notifiable->name)
