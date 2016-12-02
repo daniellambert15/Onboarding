@@ -5,9 +5,9 @@ namespace App\Console\Commands;
 use App\Models\ModuleQuestion;
 use App\Models\UserModuleAnswer;
 use App\Models\User;
+use App\Notifications\NotAllPreviousMonthsModulesCompleted;
 use App\Notifications\notCompletedModule;
-use Notification;
-use Mail;
+use Illuminate\Support\Facades\Notification;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
@@ -25,7 +25,7 @@ class SendNotification extends Command
      *
      * @var string
      */
-    protected $description = 'Send a notification to a user on a given day';
+    protected $description = 'Will check if user needs to action any module questions';
 
     /**
      * Create a new command instance.
@@ -85,8 +85,14 @@ class SendNotification extends Command
             if($count < count($modules))
             {
                 $tasksLeft = count($modules) - $count;
-                Notification::send($user, new notCompletedModule(['user' => $user, 'count' => $tasksLeft]));
+
+                Notification::send($user, new
+                NotAllPreviousMonthsModulesCompleted(['user' => $user, 'count' => $tasksLeft]));
+
             }
+
+            //dd($completed);
+
         }
 
     }
