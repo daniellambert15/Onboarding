@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Models\ModuleQuestion;
 use App\Models\UserModuleAnswer;
 use App\Models\User;
-use App\Notifications\notCompletedModules;
+use App\Notifications\NotAllPreviousMonthsModulesCompleted;
 use Illuminate\Support\Facades\Notification;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
