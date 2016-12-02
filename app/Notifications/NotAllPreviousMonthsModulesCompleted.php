@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use Mail;
+use App\Mail\notCompletedModules;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use App\Models\ModuleQuestion;
