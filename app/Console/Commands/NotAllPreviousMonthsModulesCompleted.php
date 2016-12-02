@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use Auth;
 use Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
