@@ -6,6 +6,7 @@ use App\Models\ModuleQuestion;
 use App\Models\UserModuleAnswer;
 use App\Models\User;
 use App\Notifications\NotAllPreviousMonthsModulesCompleted;
+use App\Notifications\notCompletedModules;
 use Illuminate\Support\Facades\Notification;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
