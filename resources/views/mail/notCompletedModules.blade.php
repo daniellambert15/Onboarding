@@ -3,7 +3,7 @@
 </h2>
 
 <p>
-    Hi admin,
+    Hi {{env('ADMIN_NAME', 'Admin')}},
 </p>
 
 <p>

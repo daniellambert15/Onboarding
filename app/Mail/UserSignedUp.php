@@ -38,7 +38,7 @@ class UserSignedUp extends Mailable
     public function build()
     {
         return $this
-            ->from('website@eco-energi.com')
+            ->from(env('ADMIN_EMAIL'))
             ->view('mail.userSignedUp');
     }
 }

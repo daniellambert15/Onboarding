@@ -34,8 +34,6 @@ class ModuleQuestion extends Model
             where('module_question_id', $this->id)
             ->where('user_id', Auth::user()->id)
             ->get();
-
-        //return $this->hasMany('App\Models\UserModuleAnswer', 'module_question_id', 'id');
     }
 
 }

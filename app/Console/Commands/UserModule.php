@@ -2,14 +2,15 @@
 
 namespace App\Console\Commands;
 
-use App\Models\ModuleQuestion;
-use App\Models\UserModuleAnswer;
+use Carbon\Carbon;
 use App\Models\User;
-use App\Notifications\NotAllPreviousMonthsModulesCompleted;
+use App\Models\Module;
+use App\Models\ModuleQuestion;
+use Illuminate\Console\Command;
+use App\Models\UserModuleAnswer;
 use App\Notifications\notCompletedModule;
 use Illuminate\Support\Facades\Notification;
-use Carbon\Carbon;
-use Illuminate\Console\Command;
+use App\Notifications\NotAllPreviousMonthsModulesCompleted;
 
 class UserModule extends Command
 {
@@ -50,61 +51,57 @@ class UserModule extends Command
         {
             // so, we've got the users details now, what we want to do is check which module they're on
             // and how many they've completed through this month.
-            $modules = ModuleQuestion::where('module_id', $user->module)->get();
+            $questions = ModuleQuestion::where('module_id', $user->module)->get();
 
             // right, now we have to see if the user has complete those module questions.
-            // if they have, progress their module, until the're at module 12, then we want to go back
-            // to module 1.
+            // if they have, progress their module, until the're at the last module, then we want to go back
+            // to the first module.
 
             $count = 0;
+			$number_questions = count($questions);
 
-            $date = Carbon::now();
+            $today = Carbon::now();
 
-            foreach($modules as $module)
+            foreach($questions as $question)
             {
                 // has user completed this module?
-                $completedModules = UserModuleAnswer::
-                where('module_question_id' , $module->id)
+                $answers = UserModuleAnswer::
+                where('module_question_id' , $question->id)
                     ->where('user_id', $user->id)
                     ->get();
 
                 // now we need to get the modules that are under 6 months old, as we dont want
-                // to pick up las years answers
+                // to pick up last years answers
 
-                $today = carbon::now();
+                foreach($answers as $answer) {
+                    $answerDate = Carbon::createFromFormat('Y-m-d H:i:s', $answer->updated_at);
 
-                foreach($completedModules as $module) {
-                    $modulesDate = Carbon::createFromFormat('Y-m-d H:i:s', $module->updated_at);
-                    // USER MODULE - HAS TO BE COMPLETED WITHIN 6 MONTHS!!
-                    if ($today->diffInMonths($modulesDate) < 6) {
+                    if ($today->diffInMonths($answerDate) < config('app.modules_months')) {
                         $count++;
                     }
                 }
             }
 
-            if($count < count($modules))
+            if($count < $number_questions)
             {
-                $tasksLeft = count($modules) - $count;
+                $tasksLeft = $number_questions - $count;
 
                 Notification::send($user, new
                 NotAllPreviousMonthsModulesCompleted(['user' => $user, 'count' => $tasksLeft]));
 
             }else{
-                if($user->module < 12)
+
+				$modules = Module::all();
+
+                if($user->module < $modules->max('id'))
                 {
-                    $module = $user->module;
-                    $module = $module + 1;
-                    $user->module = $module;
+                    $user->module = Module::where('id', '>', $user->module)->min('id');
                     $user->save();
                 }else{
-                    $user->module = 1;
+                    $user->module = $modules->first()->id;
                     $user->save();
                 }
             }
-
-            //dd($completed);
-
         }
-
     }
 }

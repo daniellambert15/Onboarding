@@ -65,6 +65,13 @@ Route::group(['middleware' => 'stage3'], function () {
     Route::get('/updateUserAnswer/{id}', 'ModuleController@edit');
 });
 
+
+Route::get('/test' , function(){
+	$moudle = App\Models\Module::get()->first();
+	dd($moudle);
+});
+
+
 Route::group(['middleware' => 'is_admin'], function () {
 
     // User

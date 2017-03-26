@@ -55,8 +55,7 @@ class NotAllPreviousMonthsModulesCompleted extends Notification
                     ->line('Hi '.$notifiable->name)
                     ->line('You\'re receiving this email because you\'ve got '.$count.' outstanding
                      task(s) to complete and proceed to the next module.')
-                    ->action('Click here to complete',
-                        'https://onboarding.fcacomplianceservices.com/module')
+                    ->action('Click here to complete', env('APP_URL').'/module')
                     ->line('Please click the above link to be taken to the modules you need to complete.');
     }
 

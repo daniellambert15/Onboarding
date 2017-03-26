@@ -12,7 +12,10 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Onboarding',
+    'name' => env('NAME'),
+
+    'navbar_name' => env('NAVBAR_NAME'),
+	'modules_months' => env('MODULES_MONTHS', 6),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://onboarding.fcacomplianceservices.com'),
 
     /*
     |--------------------------------------------------------------------------
