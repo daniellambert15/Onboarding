@@ -57,6 +57,22 @@ class ModuleController extends Controller
 
         Mail::to(env('ADMIN_EMAIL'))->send(new taskSubmitted(Auth::user()));
 
+        if (env('ADMIN_EMAIL_TWO') != "") {
+            Mail::to(env('ADMIN_EMAIL_TWO'))->send(new taskSubmitted(Auth::user()));
+        }
+
+        if (env('ADMIN_EMAIL_THREE') != "") {
+            Mail::to(env('ADMIN_EMAIL_THREE'))->send(new taskSubmitted(Auth::user()));
+        }
+
+        if (env('ADMIN_EMAIL_FOUR') != "") {
+            Mail::to(env('ADMIN_EMAIL_FOUR'))->send(new taskSubmitted(Auth::user()));
+        }
+
+        if (env('ADMIN_EMAIL_FIVE') != "") {
+            Mail::to(env('ADMIN_EMAIL_FIVE'))->send(new taskSubmitted(Auth::user()));
+        }
+
         Auth::user()->notify(new userTaskSubmitted);
 
         return redirect('module')->with('success', 'Thank you. You\'ve submitted that module question.');

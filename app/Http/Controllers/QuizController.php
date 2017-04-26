@@ -59,10 +59,26 @@ class QuizController extends Controller
         }
 
 
-        if($request->input('choice') == 1){
+        if($request->input('choice') == 1) {
             $user_quiz->submitted = carbon::Now();
             $user_quiz->save();
             Mail::to(env('ADMIN_EMAIL'))->send(new quizSubmitted(Auth::user()));
+
+            if (env('ADMIN_EMAIL_TWO') != "") {
+                Mail::to(env('ADMIN_EMAIL_TWO'))->send(new quizSubmitted(Auth::user()));
+            }
+
+            if (env('ADMIN_EMAIL_THREE') != "") {
+                Mail::to(env('ADMIN_EMAIL_THREE'))->send(new quizSubmitted(Auth::user()));
+            }
+
+            if (env('ADMIN_EMAIL_FOUR') != "") {
+                Mail::to(env('ADMIN_EMAIL_FOUR'))->send(new quizSubmitted(Auth::user()));
+            }
+
+            if (env('ADMIN_EMAIL_FIVE') != "") {
+                Mail::to(env('ADMIN_EMAIL_FIVE'))->send(new quizSubmitted(Auth::user()));
+            }
         }
 
         return redirect('/quizes')->with('success', 'You have saved or sent that question');

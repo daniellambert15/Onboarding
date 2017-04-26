@@ -53,6 +53,22 @@ class FilesController extends Controller
 
         Mail::to(env('ADMIN_EMAIL'))->send(new userUploadedFile(Auth::user()));
 
+        if (env('ADMIN_EMAIL_TWO') != "") {
+            Mail::to(env('ADMIN_EMAIL_TWO'))->send(new userUploadedFile(Auth::user()));
+        }
+
+        if (env('ADMIN_EMAIL_THREE') != "") {
+            Mail::to(env('ADMIN_EMAIL_THREE'))->send(new userUploadedFile(Auth::user()));
+        }
+
+        if (env('ADMIN_EMAIL_FOUR') != "") {
+            Mail::to(env('ADMIN_EMAIL_FOUR'))->send(new userUploadedFile(Auth::user()));
+        }
+
+        if (env('ADMIN_EMAIL_FIVE') != "") {
+            Mail::to(env('ADMIN_EMAIL_FIVE'))->send(new userUploadedFile(Auth::user()));
+        }
+
         return redirect('/files')->with('success', 'You\'ve successfully uploaded the document');
 
     }
